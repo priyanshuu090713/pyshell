@@ -1,4 +1,4 @@
-# pyshel
+# pyshell
 a complete sim shell 
 ## how to use
 to use do the following in order:
