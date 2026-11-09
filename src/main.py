@@ -1,13 +1,18 @@
 import sys
 import runpy
 import pathlib as path
-from termcolor import colored
+import termcolor as t
 
 while True :
+    i = str(input(f"{t.colored(path.Path.cwd() , "grey") } {t.colored('>>>','red')}:\t"))
+    if i == "exit" or i == "kill" or i == "quit" :
+        break
     try :
-        global i
-        i = str(input(f"{path.Path.cwd()} {colored('>>>','red')}:\t"))
         runpy.run_path(f"func/{i}.py")
     except FileNotFoundError :
-        print(f"Command {i} does not exist . retry", file=sys.stderr)
-        continue
+        try:
+            print(exec(i))
+        except NameError :
+            print(f"attempted command {i} , does not exist in python commandline or in documented custom functions" , file=sys.stderr)
+            continue
+print(f"{t.colored("exiting")} : user requested exit")
