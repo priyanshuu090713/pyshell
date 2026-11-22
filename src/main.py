@@ -4,8 +4,8 @@ import pathlib as path
 import termcolor as t
 
 while True :
-    i = str(input(f"{t.colored(path.Path.cwd() , "grey") } {t.colored('>>>','red')}:\t"))
-    if i == "exit" or i == "kill" or i == "quit" :
+    i = str(input(f"{t.colored(path.Path.cwd() , "grey") } {t.colored('>>>','red')}:\t")).lower()
+    if i == "exit" or i == "kill" or i == "quit" or i == "q" :
         break
     try :
         runpy.run_path(f"func/{i}.py")
